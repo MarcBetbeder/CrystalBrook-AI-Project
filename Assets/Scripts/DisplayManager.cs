@@ -159,6 +159,11 @@ public class DisplayManager : MonoBehaviour
         FindPlayerDisplayByID(id).SetDealer();
     }
 
+    public void SetCardMoveSpeed(float speed)
+    {
+        playedCardsMoveSpeed = speed;
+    }
+
     public void UpdatePlayerTricks(Player player)
     {
         string tricks = player.GetTricks().ToString();
