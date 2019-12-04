@@ -5775,7 +5775,7 @@ PrefabInstance:
     - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
         type: 3}
       propertyPath: mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
         type: 3}
@@ -5783,6 +5783,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6517948625335207136, guid: 12b6941be609be447b7bf555306fd68c,
         type: 3}
+    - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
+        type: 3}
+      propertyPath: simulationEnginePrefab
+      value: 
+      objectReference: {fileID: 4281825631926315821, guid: e4f7ca0d33b8035478124c7174574a5d,
+        type: 3}
+    - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
+        type: 3}
+      propertyPath: assessmentMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92a1af5a8f33aa248ab78b9055675447, type: 3}
 --- !u!1 &1135988941

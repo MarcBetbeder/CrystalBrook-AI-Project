@@ -45,7 +45,7 @@ public abstract class Engine : MonoBehaviour
 
     protected abstract void PlayPhase();
 
-    protected void ScoringPhase()
+    protected virtual void ScoringPhase()
     {
         Debug.Log("Scoring the Round...");
 

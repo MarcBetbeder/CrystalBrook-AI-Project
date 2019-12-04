@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour {
         return numPlayers;
     }
 
+    public DisplayManager GetDisplayManager()
+    {
+        return dm;
+    }
+
     public void SetFirstDealer(int firstDealer)
     {
         this.firstDealer = firstDealer;
@@ -272,6 +277,11 @@ public class GameManager : MonoBehaviour {
 
         currentRound++;
         Destroy(deck.gameObject);
+    }
+
+    public void ContinueGame()
+    {
+        gw.ContinueGame();
     }
 
     public void ResetCurrentRound()
