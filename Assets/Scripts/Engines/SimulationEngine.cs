@@ -193,4 +193,15 @@ public class SimulationEngine : Engine
         recievedInfo = false;
         currentCard = null;
     }
+
+    protected override void ScoringPhase()
+    {
+        Debug.Log("Scoring the Round...");
+
+        gm.ScoreRound();
+
+        gm.FinaliseRound();
+
+        gm.ContinueGame();
+    }
 }

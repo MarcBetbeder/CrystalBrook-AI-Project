@@ -279,6 +279,11 @@ public class GameManager : MonoBehaviour {
         Destroy(deck.gameObject);
     }
 
+    public void ContinueGame()
+    {
+        gw.ContinueGame();
+    }
+
     public void ResetCurrentRound()
     {
         engine.SafeRoundReset();
