@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1955442846222638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4485777264909690}
+  - component: {fileID: 114884049440106448}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4485777264909690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955442846222638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114884049440106448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955442846222638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 477246cee071ce64ea07ab8e01b19978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numPlayers: 6
+  maxHandSize: 8
+  zeroValue: 7
+  mode: 0
+  playerHandSpread: 0.8
+  deckPrefab: {fileID: 1206433183731924, guid: d6bded7fa0ac5cf438b51f9d9424883d, type: 3}
+  buttonDisabler: {fileID: 0}
+  gameSetupFormPrefab: {fileID: 1958161274467624508, guid: 47470043c0f2e3a4687ad1ae9eed9c08,
+    type: 3}
+  playerSetupFormPrefab: {fileID: 1958161274467624508, guid: 0f73ce1973ab9b744afeaa74f97ed0d5,
+    type: 3}

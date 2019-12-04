@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &161274540219916957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 161274540219916931}
+  - component: {fileID: 161274540219916930}
+  m_Layer: 0
+  m_Name: DisplayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &161274540219916931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161274540219916957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &161274540219916930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161274540219916957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c15dcb92441ec4db7c125df3f9a4f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPositions:
+  - {fileID: 11400000, guid: 928332f00362dfb4f89597ef38876f07, type: 2}
+  - {fileID: 11400000, guid: 2c6fd35f2845d3141bab9b988b22a934, type: 2}
+  - {fileID: 11400000, guid: a4ff6f3eab7d9b54fbe2bbbc65573154, type: 2}
+  - {fileID: 11400000, guid: bf91d86fd0e8b544a8d52673a45b991b, type: 2}
+  - {fileID: 11400000, guid: 58f2f2aa7d5a02f45bf06da285108ab2, type: 2}
+  - {fileID: 11400000, guid: 252a58dd72250474f93ebaf381806b94, type: 2}
+  - {fileID: 11400000, guid: 08ba8688fde12ae46a2b6c839551471b, type: 2}
+  playerSprites:
+  - {fileID: 21300000, guid: 622c94dfbf6b10e4fae5e98da3eedcfa, type: 3}
+  - {fileID: 21300000, guid: 079282f6dc7ef6846a70f903e6ea65c4, type: 3}
+  - {fileID: 21300000, guid: 9246f44a7a0461f42a853c6b5e26128b, type: 3}
+  - {fileID: 21300000, guid: 649fcb0fa2295d045b4ffda29279263f, type: 3}
+  playerHandLocation: {fileID: 0}
+  playerHandSpread: 0.8
+  trumpCardLocation: {fileID: 0}
+  trumpCardScale: 0.8
+  playedCardsScale: 0.7
+  playedCardsMoveSpeed: 6
+  playerDisplayPrefab: {fileID: 0}
+  cardBackPrefab: {fileID: 0}
