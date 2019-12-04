@@ -307,7 +307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Format: "Suit" + "Value". Eg: C2 = 2 of Clubs'
+  m_text: 'Format: "Value" + "Suit". Eg: 2C = 2 of Clubs'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ed793beae4eed94fa0dff929d81ef8e, type: 2}
   m_sharedMaterial: {fileID: 21014372507001100, guid: 4ed793beae4eed94fa0dff929d81ef8e,
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: C2
+  m_text: 2C
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ed793beae4eed94fa0dff929d81ef8e, type: 2}
   m_sharedMaterial: {fileID: 21014372507001100, guid: 4ed793beae4eed94fa0dff929d81ef8e,
