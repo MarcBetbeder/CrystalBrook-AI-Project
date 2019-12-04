@@ -38,24 +38,12 @@ public class SimulationEngine : Engine
         else
         {
             gm.DealFullRound();
-
-            DisplayMainPlayerHand();
         }
 
         trumpCard = deck.DrawRandomCard();
         gm.DisplayTrumpCard(trumpCard);
 
         BiddingPhase();
-    }
-
-    private void DisplayMainPlayerHand()
-    {
-        List<Card> hand = mainPlayer.GetHand();
-
-        foreach (Card c in hand)
-        {
-            gm.AddCardToMainHandDisplay(c);
-        }
     }
 
     protected override void BiddingPhase()
