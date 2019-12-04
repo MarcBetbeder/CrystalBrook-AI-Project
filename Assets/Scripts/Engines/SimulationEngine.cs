@@ -23,12 +23,39 @@ public class SimulationEngine : Engine
 
     protected override void DealCards()
     {
-        
+        Debug.Log("Dealing Cards...");
+
+        if (gm.IsHeadRound())
+        {
+            for (int i = 0; i < numPlayers; i++)
+            {
+                Card headCard = deck.DrawRandomCard();
+                currentPlayer.AddCardToHand(headCard);
+                gm.DisplayHeadCard(headCard, currentPlayer);
+                currentPlayer = gm.GetNextPlayer(currentPlayer.GetID());
+            }
+        }
+        else
+        {
+            gm.DealFullRound();
+
+            DisplayMainPlayerHand();
+        }
+
+        trumpCard = deck.DrawRandomCard();
+        gm.DisplayTrumpCard(trumpCard);
+
+        BiddingPhase();
     }
 
     private void DisplayMainPlayerHand()
     {
-        
+        List<Card> hand = mainPlayer.GetHand();
+
+        foreach (Card c in hand)
+        {
+            gm.AddCardToMainHandDisplay(c);
+        }
     }
 
     protected override void BiddingPhase()
