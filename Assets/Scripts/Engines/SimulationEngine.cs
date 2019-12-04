@@ -113,26 +113,96 @@ public class SimulationEngine : Engine
 
     protected override void PlayPhase()
     {
-        
+        Debug.Log("Playing Cards...");
+
+        gm.PlayPhaseDisplay();
+
+        StartCoroutine(PlayAllTricks());
     }
 
     private IEnumerator PlayAllTricks()
     {
-        
+        tricksAwarded = 0;
+
+        while (tricksAwarded < cardsThisRound)
+        {
+            yield return new WaitForSeconds(pauseTime);
+            yield return PlayTrick();
+        }
+
+        ScoringPhase();
     }
 
     private IEnumerator PlayTrick()
     {
-        
+        currentTrick = new Trick(numPlayers, trumpCard.GetSuit());
+        currentPlayer = currentLeader;
+
+        while (!currentTrick.IsComplete())
+        {
+            if (gm.IsHeadRound())
+            {
+                yield return new WaitForSeconds(pauseTime);
+                yield return PlayHeadCard();
+            }
+            else
+            {
+                yield return new WaitForSeconds(pauseTime);
+                yield return PlayCard();
+            }
+        }
+
+        yield return gm.WaitForMovingCards();
+
+        Debug.Log(currentTrick.GetWinningPlayer().GetName() + " has won this trick!");
+
+        yield return gm.AwardTrick(currentTrick.GetWinningPlayer());
+
+        tricksAwarded++;
+        currentLeader = currentTrick.GetWinningPlayer();
     }
 
     private IEnumerator PlayCard()
     {
-        
+        currentCard = currentPlayer.ChooseCardToPlay();
+        recievedInfo = true;
+
+        while (!recievedInfo)
+        {
+            yield return null;
+        }
+
+        if (currentCard != null)
+        {
+            gm.DisplayPlayedCard(currentCard, currentPlayer);
+
+            currentTrick.AddCard(currentCard, currentPlayer);
+            currentPlayer = gm.GetNextPlayer(currentPlayer.GetID());
+        }
+
+        recievedInfo = false;
+        currentCard = null;
     }
 
     private IEnumerator PlayHeadCard()
     {
-        
+        currentCard = gm.GetHeadCard(currentPlayer);
+        recievedInfo = true;
+
+        while (!recievedInfo)
+        {
+            yield return null;
+        }
+
+        if (currentCard != null)
+        {
+            gm.PlayHeadCard(currentPlayer);
+
+            currentTrick.AddCard(currentCard, currentPlayer);
+            currentPlayer = gm.GetNextPlayer(currentPlayer.GetID());
+        }
+
+        recievedInfo = false;
+        currentCard = null;
     }
 }
