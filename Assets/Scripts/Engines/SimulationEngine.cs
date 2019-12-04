@@ -60,17 +60,55 @@ public class SimulationEngine : Engine
 
     protected override void BiddingPhase()
     {
-        
+        Debug.Log("Collecting Bids...");
+
+        invalidBid = cardsThisRound;
+        if (cardsThisRound == 1)
+        {
+            currentPlayer = mainPlayer;
+        }
+        else
+        {
+            currentPlayer = currentLeader;
+        }
+        StartCoroutine(CollectBids());
     }
 
     private IEnumerator CollectBids()
     {
-        
+        bidsRecieved = 0;
+
+        while (bidsRecieved < numPlayers)
+        {
+            yield return new WaitForSeconds(pauseTime);
+
+            yield return CollectPlayerBid(currentPlayer);
+        }
+
+        PlayPhase();
     }
 
     private IEnumerator CollectPlayerBid(Player player)
     {
-        
+        currentBid = player.MakeRandomBid(cardsThisRound, IsCrystalBrook(), invalidBid);
+        recievedInfo = true;
+
+        while (!recievedInfo)
+        {
+            yield return null;
+        }
+
+        if (currentBid >= 0)
+        {
+            player.SetBid(currentBid);
+            invalidBid -= currentBid;
+            gm.DisplayPlayerBid(player);
+            bidsRecieved++;
+            currentPlayer = gm.GetNextPlayer(player.GetID());
+        }
+
+        recievedInfo = false;
+        currentBid = -1;
     }
 
     protected override void PlayPhase()
