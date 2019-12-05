@@ -51,6 +51,8 @@ public abstract class Engine : MonoBehaviour
 
         gm.ScoreRound();
 
+        gm.EndRoundAssessment();
+
         gm.FinaliseRound();
     }
 
@@ -90,6 +92,16 @@ public abstract class Engine : MonoBehaviour
         currentBid = bid;
     }
 
+    public int GetMaxHandSize()
+    {
+        return maxHandSize;
+    }
+
+    public int GetCardsThisRound()
+    {
+        return cardsThisRound;
+    }
+
     public List<Card> ConstrainHand(List<Card> hand)
     {
         List<Card> legalHand = new List<Card>();
@@ -116,6 +128,11 @@ public abstract class Engine : MonoBehaviour
         return legalHand;
     }
 
+    public string GetPlacingByID(int id)
+    {
+        return gm.DeterminePlacings()[id];
+    }
+
     public void SafeRoundReset()
     {
         StopAllCoroutines();
@@ -126,5 +143,27 @@ public abstract class Engine : MonoBehaviour
         trumpCard = null;
         recievedInfo = false;
         currentCard = null;
+    }
+
+    public bool IsHeadRound()
+    {
+        return gm.IsHeadRound();
+    }
+
+    public bool IsCrystalBrooked(int id)
+    {
+        if (id == currentLeader.GetID() && cardsThisRound != 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public List<Card> GetVisibleCards(int id)
+    {
+        return gm.GetVisibleCards(id);
     }
 }

@@ -52,6 +52,8 @@ public class SAIEngine : Engine
             yield return CollectTrumpCard();
         }
 
+        gm.StartRoundAssessment();
+
         BiddingPhase();
     }
 

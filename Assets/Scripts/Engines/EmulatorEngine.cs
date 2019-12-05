@@ -51,6 +51,8 @@ public class EmulatorEngine : Engine {
             yield return CollectTrumpCard();
         }
 
+        gm.StartRoundAssessment();
+
         BiddingPhase();
     }
 

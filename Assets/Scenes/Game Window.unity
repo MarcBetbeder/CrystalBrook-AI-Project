@@ -5753,7 +5753,7 @@ PrefabInstance:
     - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
         type: 3}
       propertyPath: numPlayers
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
         type: 3}
@@ -5764,7 +5764,7 @@ PrefabInstance:
     - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
         type: 3}
       propertyPath: maxHandSize
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114884049440106448, guid: 92a1af5a8f33aa248ab78b9055675447,
         type: 3}
