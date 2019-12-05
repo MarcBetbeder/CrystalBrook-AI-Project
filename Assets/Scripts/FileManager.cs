@@ -13,8 +13,6 @@ public class FileManager
     {
         folderPath = Path.Combine(Application.dataPath, "Hand-Bid Reports");
 
-        Debug.Log(folderPath);
-
         if (!Directory.Exists(folderPath))
         {
             Directory.CreateDirectory(folderPath);
@@ -24,12 +22,7 @@ public class FileManager
 
         subFolderPath = Path.Combine(folderPath, subFolderName);
 
-        Debug.Log(subFolderPath);
-
         Directory.CreateDirectory(subFolderPath);
-
-        // Test purposes only.
-        File.Create(Path.Combine(subFolderPath, "TestFile.txt"));
     }
 
     private string GetSubFolderName()
@@ -41,8 +34,20 @@ public class FileManager
 
         string subFolderName = date + " " + time + " Reports";
 
-        Debug.Log(subFolderName);
-
         return subFolderName;
+    }
+
+    public string createAIReport(string aiName)
+    {
+        string fileName = aiName + ".txt";
+
+        string aiReportPath = Path.Combine(subFolderPath, fileName);
+
+        using (FileStream aiReport = File.Create(aiReportPath))
+        {
+
+        }
+
+        return aiReportPath;
     }
 }

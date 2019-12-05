@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour {
     // Start-up
     void Start()
     {
+        fm = new FileManager();
         // Add Game Startup as a delegate to the sceneLoaded event.
         SceneManager.sceneLoaded += ExecuteGame;
         if (SceneManager.GetActiveScene().name == "Game Window")
@@ -91,13 +92,12 @@ public class GameManager : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void ApplyGameSetup(int numPlayers, int maxHandSize, int zeroValue, GameMode mode, bool assessment)
+    public void ApplyGameSetup(int numPlayers, int maxHandSize, int zeroValue, GameMode mode)
     {
         this.numPlayers = numPlayers;
         this.maxHandSize = maxHandSize;
         this.zeroValue = zeroValue;
         this.mode = mode;
-        this.assessmentMode = assessment;
 
         CheckValidNumPlayers();
         CheckValidHandSize();
@@ -237,12 +237,6 @@ public class GameManager : MonoBehaviour {
         dm.InitialisePlayerDisplays(players);
 
         SetUpEngine();
-        Debug.Log(engine.GetType());
-
-        if (assessmentMode)
-        {
-            fm = new FileManager();
-        }
 
         currentDealer = SelectFirstDealer();
     }
@@ -305,6 +299,8 @@ public class GameManager : MonoBehaviour {
         gameHasFinished = true;
         Debug.Log("Game Finished!");
         dm.ResetDisplays();
+
+        EndGameAssessment();
 
         gw.ShowScoreBoard();
     }
@@ -575,6 +571,96 @@ public class GameManager : MonoBehaviour {
         return winners;
     }
 
+    public string[] DeterminePlacings()
+    {
+        List<Player> sortedPlayers = new List<Player>();
+        List<Player> unsortedPlayers = new List<Player>();
+
+        foreach (Player p in players)
+        {
+            unsortedPlayers.Add(p);
+        }
+
+        int count = unsortedPlayers.Count;
+
+        string[] placings = new string[count];
+        int numSorted = 0;
+        string placing = "1st";
+
+        while (sortedPlayers.Count < count)
+        {
+            int topScore = 0;
+            foreach (Player p in unsortedPlayers)
+            {
+                if (p.GetScore() > topScore)
+                {
+                    topScore = p.GetScore();
+                }
+            }
+
+            bool check = false;
+
+            while (!check)
+            {
+                check = true;
+                Player temp = null;
+                foreach (Player p in unsortedPlayers)
+                {
+                    if (p.GetScore() == topScore)
+                    {
+                        sortedPlayers.Add(p);
+                        numSorted++;
+                        placings[p.GetID()] = placing;
+                        check = false;
+                        temp = p;
+                        break;
+                    }
+                }
+
+                unsortedPlayers.Remove(temp);
+            }
+
+            switch (numSorted)
+            {
+                case 0:
+                    placing = "1st";
+                    break;
+                case 1:
+                    placing = "2nd";
+                    break;
+                case 2:
+                    placing = "3rd";
+                    break;
+                case 3:
+                    placing = "4th";
+                    break;
+                case 4:
+                    placing = "5th";
+                    break;
+                case 5:
+                    placing = "6th";
+                    break;
+                case 6:
+                    placing = "7th";
+                    break;
+                case 7:
+                    placing = "8th";
+                    break;
+                case 8:
+                    placing = "9th";
+                    break;
+                case 9:
+                    placing = "10th";
+                    break;
+                default:
+                    placing = "Other";
+                    break;
+            }
+        }
+
+        return placings;
+    }
+
     private Player SelectFirstDealer()
     {
         if (firstDealer == 0)
@@ -638,7 +724,7 @@ public class GameManager : MonoBehaviour {
         {
             if (p.GetPlayerType() == PlayerType.AI || p.GetPlayerType() == PlayerType.MAIN_AI)
             {
-                p.CreateBrain(engine);
+                p.CreateBrain(engine, fm);
             }
         }
     }
@@ -659,6 +745,57 @@ public class GameManager : MonoBehaviour {
         } else
         {
             return true;
+        }
+    }
+
+    public List<Card> GetVisibleCards(int id)
+    {
+        List<Card> cards = new List<Card>();
+
+        foreach (Player p in players)
+        {
+            if (id != p.GetID())
+            {
+                foreach (Card c in p.GetHand())
+                {
+                    cards.Add(c);
+                }
+            }
+        }
+
+        return cards;
+    }
+
+    public void StartRoundAssessment()
+    {
+        foreach (Player p in players)
+        {
+            if (p.GetPlayerType() == PlayerType.AI || p.GetPlayerType() == PlayerType.MAIN_AI)
+            {
+                p.StartRoundAssessment();
+            }
+        }
+    }
+
+    public void EndRoundAssessment()
+    {
+        foreach (Player p in players)
+        {
+            if (p.GetPlayerType() == PlayerType.AI || p.GetPlayerType() == PlayerType.MAIN_AI)
+            {
+                p.EndRoundAssessment();
+            }
+        }
+    }
+
+    public void EndGameAssessment()
+    {
+        foreach (Player p in players)
+        {
+            if (p.GetPlayerType() == PlayerType.AI || p.GetPlayerType() == PlayerType.MAIN_AI)
+            {
+                p.EndGameAssessment();
+            }
         }
     }
 }

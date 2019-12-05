@@ -43,6 +43,8 @@ public class SimulationEngine : Engine
         trumpCard = deck.DrawRandomCard();
         gm.DisplayTrumpCard(trumpCard);
 
+        gm.StartRoundAssessment();
+
         BiddingPhase();
     }
 
@@ -199,6 +201,8 @@ public class SimulationEngine : Engine
         Debug.Log("Scoring the Round...");
 
         gm.ScoreRound();
+
+        gm.EndRoundAssessment();
 
         gm.FinaliseRound();
 

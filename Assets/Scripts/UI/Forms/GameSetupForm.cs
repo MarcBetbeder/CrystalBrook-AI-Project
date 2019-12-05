@@ -9,7 +9,6 @@ public class GameSetupForm : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private Button submitButton;
     [SerializeField] private List<TMP_InputField> inputFields;
-    [SerializeField] private Toggle assessmentToggle;
 
     private int currentlySelectedIndex;
 
@@ -49,8 +48,7 @@ public class GameSetupForm : MonoBehaviour
 
     private void SubmitButtonClick()
     {
-        bool tf = assessmentToggle.isOn;
-        menu.SubmitGameSetup(tf);
+        menu.SubmitGameSetup();
     }
 
     private void CloseButtonClick()

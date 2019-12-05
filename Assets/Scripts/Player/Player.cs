@@ -30,9 +30,24 @@ public class Player
         this.type = type;
     }
 
-    public void CreateBrain(Engine engine)
+    public void CreateBrain(Engine engine, FileManager fm)
     {
-        brain = new Brain(engine, this);
+        brain = new Brain(engine, fm, this);
+    }
+
+    public void StartRoundAssessment()
+    {
+        brain.StartRoundAssessment();
+    }
+
+    public void EndRoundAssessment()
+    {
+        brain.EndRoundAssessment();
+    }
+
+    public void EndGameAssessment()
+    {
+        brain.EndGameAssessment();
     }
 
     public void SetName(string name)

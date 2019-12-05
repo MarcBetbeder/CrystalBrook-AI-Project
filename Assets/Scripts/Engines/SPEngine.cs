@@ -46,6 +46,8 @@ public class SPEngine : Engine
         trumpCard = deck.DrawRandomCard();
         gm.DisplayTrumpCard(trumpCard);
 
+        gm.StartRoundAssessment();
+
         BiddingPhase();
     }
 

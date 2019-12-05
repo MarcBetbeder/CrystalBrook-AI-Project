@@ -12,10 +12,28 @@ public class Brain
     private LongTermMemory ltm;
     private ShortTermMemory stm;
 
-    public Brain(Engine engine, Player player)
+    public Brain(Engine engine, FileManager fm, Player player)
     {
         p = player;
         e = engine;
+
+        ltm = new LongTermMemory(engine, fm, player);
+        stm = new ShortTermMemory();
+    }
+
+    public void StartRoundAssessment()
+    {
+        ltm.StartRoundReport();
+    }
+
+    public void EndRoundAssessment()
+    {
+        ltm.EndRoundReport();
+    }
+
+    public void EndGameAssessment()
+    {
+        ltm.FinaliseReport();
     }
 
     public Card PlayRandomCard()

@@ -23,7 +23,7 @@ public class MainMenu : UIManager
         currentForm = gameSetupForm;
     }
 
-    public void SubmitGameSetup(bool tf)
+    public void SubmitGameSetup()
     {
         List<Transform> answers = GetAnswers(currentForm.transform);
 
@@ -71,7 +71,7 @@ public class MainMenu : UIManager
             }
         }
 
-        gm.ApplyGameSetup(numPlayers, maxHandSize, zeroValue, mode, tf);
+        gm.ApplyGameSetup(numPlayers, maxHandSize, zeroValue, mode);
 
         CloseCurrentForm();
 
