@@ -152,7 +152,7 @@ public abstract class Engine : MonoBehaviour
 
     public bool IsCrystalBrooked(int id)
     {
-        if (id == currentLeader.GetID() && cardsThisRound != 1)
+        if (id == currentDealer.GetID() && cardsThisRound != 1)
         {
             return true;
         }
